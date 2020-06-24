@@ -11,6 +11,9 @@ const initialState: GameState = {
     turnsTaken: 0,
 };
 
+const CELLS_PER_TURN = 3;
+const TOTAL_CELLS_COUNT = 25;
+
 export const fetchPoints = createAsyncThunk<RevealedCell[], Point[], {state: AppState}>(
     'game/fetchPointsStatus',
     async (points, thunkApi) => {
@@ -26,8 +29,12 @@ export const addPoint = createAsyncThunk<void, Point, {state: AppState}>(
     'game/addPointStatus', 
     async (point, thunkApi) => {
         const currentlyAddedPoints = thunkApi.getState().game.pointsToReveal;
+        const revealedPointsCount = thunkApi.getState().game.revealedPoints.length;
+        const addedPointsThreshold = revealedPointsCount + CELLS_PER_TURN > TOTAL_CELLS_COUNT 
+            ? TOTAL_CELLS_COUNT % CELLS_PER_TURN
+            : CELLS_PER_TURN;
 
-        if (currentlyAddedPoints.length === 2) {
+        if (currentlyAddedPoints.length + 1 === addedPointsThreshold) {
             thunkApi.dispatch(fetchPoints(currentlyAddedPoints.concat(point)));
         } else {
             thunkApi.dispatch(pointAdded(point));

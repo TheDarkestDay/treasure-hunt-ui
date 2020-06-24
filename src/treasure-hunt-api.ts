@@ -16,5 +16,8 @@ export const treasureHuntApi = {
                 points
             },
         }).then((response) => response.data.result);
+    },
+    getLeaderboards(): Promise<any[]> {
+        return axios.get(`${API_ROOT}/leaderboards`).then((response) => response.data.result);
     }
 }

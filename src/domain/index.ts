@@ -8,3 +8,8 @@ export interface RevealedCell {
     y: number;
     content: string;
 }
+
+export interface LeaderboardsEntry {
+    name: string;
+    score: number;
+}
