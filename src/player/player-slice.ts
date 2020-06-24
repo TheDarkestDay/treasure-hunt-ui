@@ -1,8 +1,9 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import { treasureHuntApi } from '../treasure-hunt-api';
 import history from '../history';
+import { PlayerState } from './player-state';
 
-const initialState = {
+const initialState: PlayerState = {
     isLoading: false,
     errorMessage: '',
     sessionId: '',

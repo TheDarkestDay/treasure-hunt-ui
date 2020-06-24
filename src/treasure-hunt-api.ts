@@ -1,4 +1,4 @@
-import { Point } from './domain/index';
+import { Point, RevealedCell } from './domain/index';
 import axios from 'axios';
 
 const API_ROOT = 'http://localhost:3000';
@@ -9,7 +9,12 @@ export const treasureHuntApi = {
             name
         }).then((response) => response.data.sessionId);
     },
-    checkFields(name: string, points: Point[]): Promise<void> {
-        return Promise.resolve();
+    checkFields(sessionId: string, points: Point[]): Promise<RevealedCell[]> {
+        return axios.get(`${API_ROOT}/field`, {
+            params: {
+                sessionId,
+                points
+            },
+        }).then((response) => response.data.result);
     }
 }
