@@ -1,0 +1,92 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`GameCell should display placeholder if content is absent 1`] = `
+<GameCell
+  cellsToReveal={Array []}
+  onClick={[MockFunction]}
+  revealedCells={
+    Array [
+      Object {
+        "content": "T",
+        "x": 1,
+        "y": 2,
+      },
+    ]
+  }
+  x={0}
+  y={0}
+>
+  <div
+    className="gameFieldCell"
+    onClick={[Function]}
+  >
+    ?
+  </div>
+</GameCell>
+`;
+
+exports[`GameCell should display the cell content 1`] = `
+<GameCell
+  cellsToReveal={Array []}
+  onClick={[MockFunction]}
+  revealedCells={
+    Array [
+      Object {
+        "content": "T",
+        "x": 0,
+        "y": 0,
+      },
+    ]
+  }
+  x={0}
+  y={0}
+>
+  <div
+    className="gameFieldCell"
+    onClick={[Function]}
+  >
+    T
+  </div>
+</GameCell>
+`;
+
+exports[`GameCell should match snapshot with highlight 1`] = `
+<GameCell
+  cellsToReveal={
+    Array [
+      Object {
+        "x": 0,
+        "y": 0,
+      },
+    ]
+  }
+  onClick={[MockFunction]}
+  revealedCells={Array []}
+  x={0}
+  y={0}
+>
+  <div
+    className="gameFieldCell gameFieldCellToReveal"
+    onClick={[Function]}
+  >
+    ?
+  </div>
+</GameCell>
+`;
+
+exports[`GameCell should match snapshot without highlight 1`] = `
+<GameCell
+  cellsToReveal={Array []}
+  onClick={[MockFunction]}
+  revealedCells={Array []}
+  x={0}
+  y={0}
+>
+  <div
+    className="gameFieldCell"
+    onClick={[Function]}
+  >
+    ?
+  </div>
+</GameCell>
+`;
