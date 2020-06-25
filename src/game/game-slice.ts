@@ -3,6 +3,7 @@ import { GameState } from './game-state';
 import { AppState } from '../app/app-state';
 import { Point, RevealedCell } from '../domain';
 import { treasureHuntApi } from '../treasure-hunt-api';
+import { sessionCleared } from '../player/player-slice';
 
 const initialState: GameState = {
     pointsToReveal: [],
@@ -57,6 +58,9 @@ const gameSlice = createSlice({
         builder.addCase(fetchPoints.fulfilled, (state, action) => {
             state.revealedPoints.push(...action.payload);
             state.turnsTaken += 1;
+        });
+        builder.addCase(sessionCleared, () => {
+            return initialState;
         });
     }
 });

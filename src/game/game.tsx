@@ -14,6 +14,7 @@ export const Game = () => {
 
     const dispatch = useDispatch();
     const sessionId = useSelector<AppState, string>((state) => state.player.sessionId);
+    const isSessionLoaded = useSelector<AppState, boolean>((state) => !state.player.isLoading);
     const revealedPoints = useSelector<AppState, RevealedCell[]>((state) => state.game.revealedPoints);
     const pointsToReveal = useSelector<AppState, Point[]>((state) => state.game.pointsToReveal);
     const pointsToRevealCount = pointsToReveal.length;
@@ -26,10 +27,10 @@ export const Game = () => {
     };
 
     useEffect(() => {
-        if (!sessionId) {
+        if (isSessionLoaded && !sessionId) {
             history.push('/');
         }
-    }, [sessionId]);
+    }, [sessionId, isSessionLoaded]);
 
     useEffect(() => {
         const foundTreasures = revealedPoints.filter((point) => point.content === 'T');

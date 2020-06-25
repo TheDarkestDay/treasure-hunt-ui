@@ -25,7 +25,7 @@ export const GameCell = ({revealedCells, x, y, onClick, cellsToReveal}: GameCell
 
     return (
         <div className={cellClass} onClick={handleClick}>
-            {cellContent || ''}
+            {cellContent || '?'}
         </div>
     );
 };

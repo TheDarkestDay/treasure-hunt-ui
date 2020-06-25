@@ -22,7 +22,9 @@ const playerSlice = createSlice({
     name: 'player',
     initialState,
     reducers: {
-        
+        sessionCleared(state) {
+            state.sessionId = '';
+        }
     },
     extraReducers: (builder) => {
         builder.addCase(createNewGame.pending, (state, action) => {
@@ -38,5 +40,7 @@ const playerSlice = createSlice({
         });
     }
 });
+
+export const { sessionCleared } = playerSlice.actions;
 
 export default playerSlice.reducer;

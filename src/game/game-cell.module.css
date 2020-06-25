@@ -1,6 +1,8 @@
 .gameFieldCell {
     padding: 15px;
     border: 1px solid black;
+
+    text-align: center;
 }
 
 .gameFieldCellToReveal {
