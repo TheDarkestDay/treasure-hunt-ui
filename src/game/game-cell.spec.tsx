@@ -26,4 +26,14 @@ describe('GameCell', () => {
 
         expect(gameCell).toMatchSnapshot();
     });
+
+    it('should call the callback with given coordinates', () => {
+        const clickHandler = jest.fn();
+        const gameCell = mount(<GameCell x={0} y={0} onClick={clickHandler} revealedCells={[{x: 1, y: 2, content: 'T'}]} cellsToReveal={[]}/>);
+
+        gameCell.simulate('click');
+
+        expect(clickHandler).toHaveBeenCalledTimes(1);
+        expect(clickHandler).toHaveBeenCalledWith(0, 0);
+    });
 });
